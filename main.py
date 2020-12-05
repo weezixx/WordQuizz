@@ -1,17 +1,6 @@
 import random
 
-class mot:
-
-  liste = []
-
-  def __init__(self,nl,fr):
-    self.nl = nl
-    self.fr = fr
-    self.score = 0 
-
-    mot.liste.append(self)
-
-def enregistrement():
+def enregistrement(voc):
 
   fichier = open("data.txt","w")
 
@@ -20,54 +9,81 @@ def enregistrement():
 
   fichier.close()
 
-mdf = []
+def quizz():
   
-fichier = open("data.txt","r")
-
-voc = [i.split(" ") for i in fichier]
-
-
-
-for i in range(3):
-  
-  nbr = random.randint(0,2)
-
-  mot = voc[nbr][1]
-  
-  score = int(voc[nbr][2])
-
-  tentatives = int(voc[nbr][3])
-
-  if mot not in mdf:
-
-    print("score avant :",score)
+  #list to avoid redundancy in Quizz (2 times the same word)
+  mdf = []
     
-    mdf.append(mot)
+  fichier = open("data.txt","r")
 
-    print(mot)
+  voc = [i.split(" ") for i in fichier]
 
-    if input() == voc[nbr][0]:
+  print(voc)
+
+
+  for i in range(3):
+    
+    nbr = random.randint(0,2)
+
+    mot = voc[nbr][1]
+    
+    score = int(voc[nbr][2])
+
+    tentatives = int(voc[nbr][3])
+
+    if mot not in mdf:
+
+      print("score avant :",score)
       
-      print("well done !!! ")   
-      
-      score += 5
+      mdf.append(mot)
 
-      tentatives += 1
+      print(mot)
 
-      voc[nbr][2] = str(score) + "\n"
+      if input() == voc[nbr][0]:
+        
+        print("well done !!! ")   
+        
+        score += 5
 
-      voc[nbr][3] = str(tentatives) + "\n"
-      
-      print("score après : ",score)
+        tentatives += 1
+
+        voc[nbr][2] = str(score)
+
+        voc[nbr][3] = str(tentatives) + "\n"
+        
+        print("score après : ",score)
+
+        enregistrement(voc)
+
+        fichier.close()
 
 
-print(mdf)
+  
+
+#def add():
+
+#  fichier = open("data.txt","w")
+
+while True:
+  
+  q = input("Alors on fait quoi ? ")
+
+  if q == "add":
+
+    fichier = open("data.txt","a")
+
+    fr_nl = input("va y donne \n")
+
+    #ajouts score + tentative
+    fr_nl += " 0 0 \n"
+
+    fichier.write(fr_nl)
+
+  elif q == "quizz":
+    quizz()
 
 
 
+  
 
-fichier.close()
-
-
-enregistrement()
 
