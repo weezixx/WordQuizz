@@ -54,7 +54,7 @@ for i in range(3):
 
       tentatives += 1
 
-      voc[nbr][2] = str(score) + "\n"
+      voc[nbr][2] = str(score)
 
       voc[nbr][3] = str(tentatives) + "\n"
       
