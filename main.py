@@ -1,6 +1,6 @@
 import random
 
-#coucou tu veux voir ma bite ? 
+#coucou tu veux voir ma bite ?
 
 def enregistrement(voc):
     fichier = open("data.txt", "w")
