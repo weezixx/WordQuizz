@@ -1,0 +1,3 @@
+huis maison 20 4
+werken travailler 25 5
+moeten devoir 30 6

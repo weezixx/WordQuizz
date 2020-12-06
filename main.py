@@ -1,6 +1,5 @@
 import random
 
-#gfgf
 def enregistrement(voc):
     fichier = open("data.txt", "w")
 
