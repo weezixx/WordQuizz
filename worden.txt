@@ -1,9 +1,9 @@
-the de/het 35 7
+the de/het 0 0
 and en 0 0
-indeed inderdaad 45 9
-in in 10 2
+indeed inderdaad 0 0
+in in 0 0
 of van 0 0
-on op 5 1
+on op 0 0
 to be zijn 0 0
 a een 0 0
 in front of voor 0 0

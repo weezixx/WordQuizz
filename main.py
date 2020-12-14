@@ -1,5 +1,7 @@
 import random
 
+import sqlite3
+
 def enregistrement(voc):
     fichier = open("data.txt", "w")
 
@@ -19,15 +21,17 @@ def quizz():
 
     print(voc)
 
-    for i in range(3):
+    for i in range(10):
 
-        nbr = random.randint(0, 2)
+        nbr = random.randint(0, 9)
 
         mot = voc[nbr][1]
 
-        score = int(voc[nbr][2])
+        #score = int(voc[nbr][2])
+        score = int(voc[nbr][-2])
 
-        tentatives = int(voc[nbr][3])
+        #tentatives = int(voc[nbr][3])
+        tentatives = int(voc[nbr][-1])
 
         if mot not in mdf:
 
