@@ -9,10 +9,17 @@ start_time = time.time()
 
 url_source = " https://app.memrise.com/course/391903/5000-most-used-dutch-words/"
 
-data = open("memrise.txt","w")
+data = open("neerlandais.txt","w")
 
-k = 0
+data2 = open("anglais.txt","w")
 
+k = 1
+
+target = 1
+
+target_2 = 4
+
+#273 car 273 pages url
 for i in range(1,273,1):
 
   url = url_source + str(i)
@@ -27,9 +34,16 @@ for i in range(1,273,1):
 
   for item in div.select("div.text"):
 
-    data.write(item.get_text()+"\n")
-    k+=1
+    if k == target:
+      data.write(item.get_text()+"\n")
+      target += 4
 
-print(k)
+    if k == target_2:
+      data2.write(item.get_text()+"\n")
+      target_2 += 4
+    k +=1
+
+
+
 
 print("--- %s seconds ---" % (time.time() - start_time))
