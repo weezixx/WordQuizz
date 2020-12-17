@@ -1,4 +1,7 @@
 import sqlite3
+import time
+start_time = time.time()
+
 
 connexion = sqlite3.connect("bdd.db")
 
@@ -14,19 +17,28 @@ curseur.execute('''CREATE TABLE IF NOT EXISTS words(
     
 )''')
 
-donnees = [("tot4","otot",1,2),("tata","atat",3,4)]
+nl = open("neerlandais.txt","r")
+en = open("anglais.txt","r")
 
-curseur.executemany("INSERT INTO words (NL, FR, SUCCEED, TRIALS) VALUES (?, ?, ?, ?)", donnees)
 
-connexion.commit()
+donnee = []
 
-curseur.execute("SELECT * FROM words")
+for i,j in zip(nl,en):
+    donnee.append(i)
 
-results = curseur.fetchall()
+    curseur.execute("INSERT INTO words (NL, FR, SUCCEED, TRIALS) VALUES (?, ?, 0, 0)", (i,j,))
 
-for result in results:
-    print(result)
+    connexion.commit()
+
+    curseur.execute("SELECT * FROM words")
+
+# results = curseur.fetchall()
+#
+# for result in results:
+#     print(result)
 
 connexion.close()
+
+print("--- %s seconds ---" % (time.time() - start_time))
 
 #Si ça bug il faut supprimer le fichier et relancer le script
